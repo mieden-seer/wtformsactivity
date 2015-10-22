@@ -1,0 +1,27 @@
+<html>
+<head>
+	<title>Shopping Cart</title>
+
+	{% block cssHead %}{% endblock %}
+</head>
+<body>
+	<br />
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-7">
+				{% block content %}{% endblock %}
+			</div>
+
+			<div class="col-sm-5">
+				{% block resultBlock %}{% endblock %}
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-sm-8">
+				{% block addItem %}{% endblock %}
+			</div>
+		</div>
+	</div>
+</body>
+</html>

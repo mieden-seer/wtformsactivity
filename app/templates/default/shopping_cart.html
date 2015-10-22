@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+
+{% block cssHead %}
+	<link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/bootstrap.min.css')}}"/>
+{% endblock %}
+
+{% block content %}
+	<h2>Product List</h2>
+	<div class="container-fluid">
+		<div class="row">
+			{% for product in products %}
+				<form action="{{url_for('shopping_cart.post_item')}}" method="post">
+					<div>
+						<input type='text' name='product_name' value="{{ product.name }}"  />
+						<input type='text' name='product_price' value="{{ product.price }}"  />
+						<input type="text" name="product_quantity" />
+						<button type="submit"> Add </button>
+					</div>
+				</form>
+			{% endfor %}
+		</div>
+	</div>
+{% endblock %}
+
+{% block resultBlock %}
+	<h1>Shopping cart<h1>
+
+	<table class="table">
+		<thead>
+			<tr>
+				<td>Name</td>
+				<td>Quantity</td>
+				<td>Price</td>
+			</tr>
+		</thead>
+
+		<tbody>
+			{% for prod in in_products %}
+				<tr>
+					<td>{{prod.name}}</td>
+					<td>{{prod.quantity}}</td>
+					<td>{{prod.price}}</td>
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+
+	<hr />
+
+	<div style="float: right">
+		<h3>Total Price: </h3> {{ total_price }}
+	<div>
+{% endblock %}
